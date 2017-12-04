@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <!-- This unifies the base css of the page across browsers -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Carousel Example</h1>
+    <p>This is a basic carousel that animates using CSS.</p>
+
+    <div id="example-carousel" class="carousel" role="tablist">
+      <div class="carousel-inner">
+
+        <div class="carousel-item current" role="tabpanel">
+          <div class="carousel-image">
+            <img src="http://via.placeholder.com/500x400/bada55?text=Slide%201" alt="Slide 1">
+          </div>
+          <div class="carousel-text">
+            This is the text for the first slide.
+          </div>
+        </div>
+
+        <div class="carousel-item" role="tabpanel">
+          <div class="carousel-image">
+            <img src="http://via.placeholder.com/500x400/9067e1?text=Slide%202" alt="Slide 2">
+          </div>
+          <div class="carousel-text">
+            This is the text for the second slide.
+          </div>
+        </div>
+
+        <div class="carousel-item" role="tabpanel">
+          <div class="carousel-image">
+            <img src="http://via.placeholder.com/500x400/ee7812?text=Slide%203" alt="Slide 3">
+          </div>
+          <div class="carousel-text">
+            This is the text for the 3rd slide.
+          </div>
+        </div>
+
+        <div class="carousel-item" role="tabpanel">
+          <div class="carousel-image">
+            <img src="http://via.placeholder.com/500x400/32090e?text=Slide%204" alt="Slide 3">
+          </div>
+          <div class="carousel-text">
+            This is the text for the last slide.
+          </div>
+        </div>
+
+      </div>
+
+      <ol class="carousel-indicators" role="tablist">
+
+        <li role="tab">
+          <a href="#example-carousel" role="button" class="current">
+            <span class="carousel-indicator"></span>
+          </a>
+        </li>
+
+        <li role="tab">
+          <a href="#example-carousel" role="button">
+            <span class="carousel-indicator"></span>
+          </a>
+        </li>
+
+        <li role="tab">
+          <a href="#example-carousel" role="button">
+            <span class="carousel-indicator"></span>
+          </a>
+        </li>
+
+        <li role="tab">
+          <a href="#example-carousel" role="button">
+            <span class="carousel-indicator"></span>
+          </a>
+        </li>
+
+      </ol>
+
+    </div>
+
+
+    <div class="carousel-controls">
+      <button class="carousel-button carousel-prev">Previous Slide</button>
+      <button class="carousel-button carousel-next">Next Slide</button>
+    </div>
+
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>

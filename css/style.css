@@ -1,0 +1,236 @@
+/*
+Styles for the demo carousel
+*/
+
+
+/*
+====    ====    ====    ====
+Generic styles:
+====    ====    ====    ====
+*/
+
+
+/*
+:root is the same as html when used on a website. 
+There are some differences between the two but not for this use-case
+for more info, and to understand why you may want to add global styles to body instead of html or :root, read this blog post:
+https://css-tricks.com/html-vs-body-in-css/
+*/
+
+:root {
+  font-size: 16px;
+  /* 
+  This will load the default sans-serif font. You can add a comma seperated list of fonts. If the first in the list is unavailable it will try the other fonts until it gets to one it can load.
+  sans-serif, serif and monotype are the users default font of that kind.
+   */
+  font-family: sans-serif;
+  /*
+  For more info on box-sizing read this article:
+  https://css-tricks.com/box-sizing/
+  */
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  line-height: 1.2;
+}
+
+
+/*
+On most websites the content will sit within a containing element. 
+This makes changing how the website behaves at different screen sizes easier, as well as making the markup cleaner
+*/
+
+.container {
+  max-width: 40rem;
+  margin: auto;
+  width: 100%;
+}
+
+
+/*
+====    ====    ====    ====
+Carousel styles:
+====    ====    ====    ====
+*/
+
+
+/*
+This creates a box which is 60% as tall as it is wide. This means that it will respond nicely at different screen sizes.
+For more info on how this works and what it means, read this stack overflow page:
+https://stackoverflow.com/questions/1495407/maintain-the-aspect-ratio-of-a-div-with-css
+*/
+
+.carousel {
+  margin: 2rem auto;
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 60%;
+  overflow: hidden;
+}
+
+.carousel-item {
+  /*
+  This positions the carousel items over the whole .carousel element.
+  */
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  /*
+  This moves the items to the left of where they are.
+  They are then hidden because the parent has the style 'overflow:hidden;'
+
+  Transforms can also be used to shrink, rotate and skew a html item.
+  */
+  transform: translateX(-100%);
+  /*
+  The transition value sets how long the browser will take to update a value
+  More info here:
+  https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions
+  */
+  transition: transform 0.3s 0.1s linear;
+}
+
+
+/*
+Now set the transform of the current item so that it appears in the middle.
+*/
+
+.carousel-item.current {
+  transform: none;
+}
+
+
+/*
+Now set all items after the current one to the right of the center
+"selector1 ~ selector2" means every every element that matches selector2 which is a sibling of selector1 and appears after it in the html
+More information:
+https://developer.mozilla.org/en-US/docs/Web/CSS/General_sibling_selectors
+*/
+
+.carousel-item.current~.carousel-item {
+  transform: translateX(100%);
+}
+
+
+/*
+Styles for the contents of the items
+*/
+
+.carousel-image {
+  height: 100%;
+  width: 100%;
+}
+
+.carousel-image img {
+  width: 100%;
+  height: 100%;
+  /*
+  To see what this does, open the page in internet explorer and see how the image is distorted.
+  */
+  object-fit: cover;
+}
+
+.carousel-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.9rem 1.2rem;
+  background: #333;
+  font-weight: 700;
+  color: #fefefe;
+  text-align: center;
+  transition: transform 0.1s;
+  /*
+  Styles for when not the current item
+  */
+  transform: translateY(100%);
+}
+
+.current .carousel-text {
+  transform: translateY(0);
+  transition: transform 0.1s 0.4s;
+}
+
+
+/*
+Carousel indicators
+*/
+
+.carousel-indicators {
+  display: table;
+  margin: 0.5rem auto;
+  list-style: none;
+  padding: 0;
+}
+
+
+/*
+This is called the clearfix trick. It fixes floats fucking up your layout
+https://css-tricks.com/snippets/css/clear-fix/
+*/
+
+.carousel-indicators::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.carousel-indicators li {
+  float: left;
+}
+
+.carousel-indicators li a {
+  padding: 0.25rem;
+  display: block;
+}
+
+.carousel-indicator {
+  border-radius: 50%;
+  display: block;
+  width: .75rem;
+  height: .75rem;
+  border: 1px solid #333;
+}
+
+a:hover .carousel-indicator {
+  background: #999;
+}
+
+a.current .carousel-indicator {
+  background: #333;
+}
+
+
+/*
+This is an example of the supports rule in css
+This checks to see if a css rule is supported and only implements the contained css if it is
+*/
+
+@supports (display: flex) {
+  .carousel-indicators {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .carousel-indicators::after {
+    content: none;
+  }
+  .carousel-indicators li {
+    flex: 0 0 auto;
+    float: none;
+  }
+}
