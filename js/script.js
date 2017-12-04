@@ -87,6 +87,8 @@
     autoChangeItem();
   }
 
+  // TODO: Make this not have weird behaviour when changing browser tab. Issue is with css not updating but the script still running.
+
   /**
    * Schedule the carousel item to change every 3 second
    */
